@@ -12,3 +12,4 @@ class LoginPageLocators:
 
 class ProductPageLocators:
     ADD_TO_CART = (By.CSS_SELECTOR, ".btn-add-to-basket")
+    SUCCESS_MESSAGE = (By.XPATH, "//*[@id='messages']/*[contains(@class, 'alert')][1]")

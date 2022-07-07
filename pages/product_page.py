@@ -10,5 +10,9 @@ class ProductPage(BasePage):
         self.browser.find_element(*ProductPageLocators.ADD_TO_CART).click()
 
     def should_be_added_to_cart(self, book_name):
-        text_in_locator = self.browser.find_element(By.XPATH, "//*[@id='messages']//*[contains(@class, 'alert-success')][1]").text
-        assert book_name in text_in_locator, "Название книги не совпадает"
+        text_in_locator = self.browser.find_element(By.XPATH, "//*[@id='messages']//*[contains(@class, 'alert-success')][1]//strong").text
+        assert book_name == text_in_locator, "Название книги не совпадает"
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
